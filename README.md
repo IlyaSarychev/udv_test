@@ -19,7 +19,7 @@ pip install -r requirements.txt
 python server.py
 ```
 
-Запуск клиента:
+Запуск клиента с тестовыми запросами:
 ```sh
 python client.py
 ```

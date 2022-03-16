@@ -15,7 +15,7 @@ async def convert_handler(request):
     async with aioredis.from_url('redis://localhost', db=0, decode_responses=True) as r:
         rate = await r.get(pair)
         if rate:
-            rate = float()
+            rate = float(rate)
             res = int(amount) * rate
             response = {
                 'success': True,

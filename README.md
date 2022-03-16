@@ -10,7 +10,7 @@ redis-server
 
 Установка зависимостей:
 ```sh
-cd udv_test
+cd udv_test-main
 pip install -r requirements.txt
 ```
 

@@ -3,7 +3,7 @@ import asyncio
 
 
 async def set_currency_request(session, data, params):
-    async with session.post('http://localhost:8080/database', params=params, data=data) as resp:
+    async with session.post('http://localhost:8080/database', params=params, json=data) as resp:
         print(resp.status)
         print(await resp.text())
 

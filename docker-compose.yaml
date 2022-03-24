@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis
+    ports:
+    - 6379:6379
+    container_name: redis-server
+    networks:
+      - appnet
+
+  rest:
+    build:
+      context: .
+    ports:
+    - 8080:8080
+    environment:
+      - AIOREDIS_HOST_NAME=redis://redis-server
+    depends_on:
+      - redis
+    networks:
+      - appnet
+
+networks:
+  appnet:

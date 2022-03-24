@@ -1,9 +1,12 @@
 import aioredis
 import string
+import os
 
 from aiohttp import web
+from dotenv import load_dotenv
 
 
+load_dotenv()
 routes = web.RouteTableDef()
 
 @routes.get('/convert')
@@ -27,7 +30,7 @@ async def convert_handler(request):
     except ValueError as err:
         return web.HTTPBadRequest(text=str(err))
 
-    async with aioredis.from_url('redis://localhost', db=request.app['DB_INDEX'], decode_responses=True) as r:
+    async with aioredis.from_url(os.getenv('AIOREDIS_HOST_NAME'), db=request.app['DB_INDEX'], decode_responses=True) as r:
         rate = await r.get(pair)
         if rate:
             rate = float(rate)
@@ -48,7 +51,7 @@ async def database_handler(request):
     to_merge = int(request.rel_url.query.get('merge', 1))
     data = await request.json()
 
-    async with aioredis.from_url('redis://localhost', db=request.app['DB_INDEX'], decode_responses=True) as r:
+    async with aioredis.from_url(os.getenv('AIOREDIS_HOST_NAME'), db=request.app['DB_INDEX'], decode_responses=True) as r:
         if not to_merge:
             await r.flushdb()
             

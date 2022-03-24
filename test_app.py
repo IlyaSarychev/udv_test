@@ -1,7 +1,12 @@
 import pytest
 import server
 import aioredis
+import os
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 @pytest.fixture
 def client(event_loop, aiohttp_client):
@@ -10,7 +15,7 @@ def client(event_loop, aiohttp_client):
 
 @pytest.fixture
 def redis_cli(event_loop):
-    r = event_loop.run_until_complete(aioredis.from_url('redis://localhost', db=1, decode_responses=True))
+    r = event_loop.run_until_complete(aioredis.from_url(os.getenv('AIOREDIS_HOST_NAME'), db=1, decode_responses=True))
     yield r
     event_loop.run_until_complete(r.flushdb())
     event_loop.run_until_complete(r.close())

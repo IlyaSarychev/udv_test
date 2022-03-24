@@ -10,7 +10,6 @@ redis-server
 
 Установка зависимостей:
 ```sh
-cd udv_test-main
 pip install -r requirements.txt
 ```
 
@@ -27,3 +26,9 @@ python client.py
 ## Запуск тестов
 
 Для тестов использовалась библиотека pytest-aiohttp. Запуск через команду pytest
+
+## Запуск через docker-compose
+
+```sh
+docker-compose -f docker-compose.dev.yaml up --build
+```

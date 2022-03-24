@@ -23,3 +23,7 @@ python server.py
 ```sh
 python client.py
 ```
+
+## Запуск тестов
+
+Для тестов использовалась библиотека pytest-aiohttp. Запуск через команду pytest

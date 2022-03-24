@@ -32,3 +32,9 @@ python client.py
 ```sh
 docker-compose -f docker-compose.yaml up --build
 ```
+
+# Запуск тестов в контейнере
+```sh
+docker exec -it udv_test-main-rest-1 sh
+pytest
+```

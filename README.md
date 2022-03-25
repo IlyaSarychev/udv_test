@@ -27,13 +27,13 @@ python client.py
 
 Для тестов использовалась библиотека pytest-aiohttp. Запуск через команду pytest
 
-## Запуск через docker-compose
+# Запуск через docker-compose
 
 ```sh
 docker-compose -f docker-compose.yaml up --build
 ```
 
-# Запуск тестов в контейнере
+## Запуск тестов в контейнере
 ```sh
 docker exec -it udv_test-main-rest-1 sh
 pytest
